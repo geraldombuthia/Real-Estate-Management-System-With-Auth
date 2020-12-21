@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                background: white;
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+            }
+
+            form {
+                background-color: white;
+                height: 80%;
+                width: 60%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 2em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+            }
+
+            .conta {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .login>h2 {
+                text-align: center;
+                margin: 1em 0;
+            }
+
+            input {
+                padding: 10px;
+                margin: 10px 0px;
+                width: 300px;
+                border-radius: 5px;
+
+            }
+
+            textarea {
+                padding: 10px;
+                width: 300px;
+                height: 100px;
+                border-radius: 5px;
+            }
+
+            .submit {
+                background-color: blue;
+                color: white;
+                border: 1px grey solid;
+                outline: none;
+                border-radius: 4px;
+                padding: 1em 2em;
+                margin: 1em;
+            }
+
+            .signin {
+                background-color: red;
+                color: white !important;
+                padding: 1em;
+                margin: 1em;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+
+            .ready {
+                color: rgb(26, 15, 189);
+                text-decoration: underline;
+            }
+        </style>
+</head>
+
+<body>
+    <form method="POST" action="/users/<%= id %>/new">
+
+        <div class="conta">
+            <div class="login">
+                <h2>New House for Sale</h2>
+                <p class="p2"></p>
+            </div>
+
+            <div class="input">
+                <input type="text" name="type" placeholder="&#xf007; Building Type"
+                    style="font-family: Arial, 'Font Awesome 5 Free'" minlength="4" required />
+            </div>
+            <div class="input">
+                <input type="text" name="age" placeholder="&#xf0e0; Date Constructed"
+                    style="font-family: Arial, 'Font Awesome 5 Free'" minlength="4" autocomplete="off" required />
+            </div>
+            <div class="input">
+                <input type="number" name="price" placeholder="&#xf023; Listing Price"
+                    style="font-family: Arial, 'Font Awesome 5 Free'" autocomplete="off" required />
+            </div>
+            <div class="input">
+                <input type="text" name="address" placeholder="&#xf023; House address"
+                    style="font-family: Arial, 'Font Awesome 5 Free'" minlength="4" autocomplete="off" required />
+            </div>
+            <div class="input">
+                <input type="number" name="bedrooms" placeholder="&#xf023; Number of Bedrooms"
+                    style="font-family: Arial, 'Font Awesome 5 Free'" autocomplete="off" required />
+            </div>
+            <div class="input">
+                <input type="number" name="bathrooms" placeholder="&#xf023; Number of Bathrooms"
+                    style="font-family: Arial, 'Font Awesome 5 Free'" autocomplete="off" required />
+            </div>
+            <div class="input">
+                <input type="number" name="rooms" placeholder="&#xf023; Total number of Rooms"
+                    style="font-family: Arial, 'Font Awesome 5 Free'" autocomplete="off" required />
+            </div>
+            <div class="input">
+                <textarea type="text" name="description" placeholder="&#xf023; House Description"
+                    style="font-family: Arial, 'Font Awesome 5 Free'" autocomplete="off" required></textarea>
+            </div>
+        </div>
+        <button class="submit">Edit</button>
+    </form>
+
+</body>
+
+</html>

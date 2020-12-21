@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Kumbh Sans', sans-serif;
+                margin: 0;
+                padding: 0;
+                font-size: 0.8em;
+                background-color: white;
+                font-size: 1em;
+            }
+            a{
+                text-decoration: none;
+            }
+            .container {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .images {
+                width: 100%;
+                height: 20vh;
+                background: red;
+            }
+
+            .rectangle {
+                background: url("https://pbs.twimg.com/profile_banners/3841577181/1603985228/1500x500") no-repeat;
+                background-color: blue;
+                background-size: cover;
+                width: 100%;
+                height: 20vh;
+            }
+
+            .circle>img {
+                width: 7em;
+                height: 7em;
+                border-radius: 50%;
+                border: 4px solid white;
+                position: relative;
+                margin: 10px;
+                bottom: 10%;
+            }
+
+            .profile {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                min-height: 500px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .edit {
+                padding: 0.5em;
+                border-radius: 10px;
+                color: black;
+                border: solid 1px blue;
+                margin: 1em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 7em;
+                height: 2.5em;
+                font-size: 20px;
+            }
+
+            .titles {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .name {
+                display: flex;
+                flex-direction: row;
+                margin: 1em;
+                font-weight: bold;
+            }
+
+            #profile {
+                padding: 0.5em;
+            }
+
+            #name {
+                margin-bottom: 2px;
+                font-size: 3em;
+                font-weight: 300;
+            }
+
+            #username {
+                margin-top: 0;
+                margin-bottom: 2px;
+                font-size: 1.2em;
+                font-weight: 700;
+            }
+
+            .Bio {
+                padding: 0 10px;
+                display: flex;
+                flex-wrap: wrap;
+                line-height: 0;
+            }
+
+            .link {
+                color: #00acee;
+            }
+
+            .location {
+                display: flex;
+                flex-wrap: wrap;
+                padding-left: 10px;
+                margin-top: 0;
+            }
+
+            .grey {
+                color: grey;
+                padding-right: 10px;
+                margin-bottom: 0;
+            }
+
+            .grey>b {
+                color: black;
+            }
+
+            .following {
+                display: flex;
+                margin-top: 0;
+                margin-bottom: 10px;
+                padding-left: 10px;
+            }
+
+            .tweets {
+                margin-bottom: 0;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            hr {
+                font-size: 2px;
+            }
+
+            .tweeted {
+                padding-left: 10px;
+            }
+
+            .thumb {
+                width: 5em;
+                height: 5em;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+
+            i {
+                margin-right: 0.1em;
+            }
+
+            .housecont {
+                width: 800px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 1em;
+            }
+
+            .housecard {
+                width: 100%;
+                max-width: 500px;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+                border-radius: 10px;
+                padding: 0.5em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 1em 0;
+            }
+
+            .top,
+            .rooms {
+                display: flex;
+                flex-direction: row;
+                margin: 1em 0;
+            }
+
+            .cash {
+                font-weight: bold;
+                color: black;
+            }
+
+            .age,
+            .bath {
+                margin-left: 1em;
+            }
+
+            @media only screen and (min-width: 600px) {
+                .container {
+                    max-width: 800px;
+                    margin: 0 auto;
+                }
+            }
+        </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="images">
+            <div class="rectangle">
+                <div class="circle">
+                    <img src="https://pbs.twimg.com/profile_images/1328597106903441411/RtySviso_400x400.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <div id="profile">
+            <div class="name">
+                <a class="edit" href="/editdash">Edit profile</a>
+                <a href="/users/<%=doc._id %>/new" class="edit">New Sale</a>
+            </div>
+            <div class="titles">
+                <h2 id="name">
+                    <%= doc.name %>
+                </h2>
+                <p id="username">
+                    <%= doc.email %>
+                </p>
+            </div>
+
+        </div>
+        <div class="Bio">
+            <p>
+                <%= doc.bio %>
+            </p>
+        </div>
+        <div class="location">
+            <p class="grey">
+                <i class="fas fa-location-arrow"></i>
+                <%= doc.location %>
+            </p>
+            <p class="grey"><i class="fas fa-link"></i>
+                <%= doc.web %>
+            </p>
+            <p class="grey">
+                <i class="fas fa-calendar"></i> Joined <%= new Date(doc.dateOfJoin).toLocaleDateString() %>
+            </p>
+        </div>
+        <div class="following">
+            <p class="grey"><b>
+                    <%= typeof doc.house !='undefined' ? doc.house.length : '0' %>
+                </b> Houses Posted</p>
+            <p class="grey"><b>1240</b> Followers</p>
+        </div>
+        <h3>Houses posted</h3>
+        <% typeof doc.houses=='undefined' ? "No houses Posted " : doc.houses.forEach(house=> {%>
+            <div class="housecont">
+                <div class="housecard">
+                    <div class="top">
+                        <p>
+                            <%= house.type %>
+                        </p>
+                        <p class="age">
+                            <%= house.age %>
+                        </p>
+                    </div>
+                    <div class="cash">
+                        <p>$<%= house.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, "," ) %>
+                        </p>
+                    </div>
+                    <div class="address">
+                        <p>
+                            <%=house.address%>
+                        </p>
+                    </div>
+                    <div class="rooms">
+                        <p><i class="fas fa-bed"></i>
+                            <%= house.bedrooms %> Bedrooms
+                        </p>
+                        <p class="bath"><i class="fas fa-bath"></i>
+                            <%= house.bathrooms %> Bathrooms
+                        </p>
+                    </div>
+                </div>
+                <% })%>
+
+
+
+            </div>
+</body>
+
+</html>

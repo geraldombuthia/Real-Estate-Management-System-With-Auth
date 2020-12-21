@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background: white;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        form {
+            background-color: white;
+            height: 80%;
+            width: 60%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .conta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login>h2 {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0px;
+            width: 300px;
+            border-radius: 5px;
+
+        }
+
+        textarea {
+            width: 300px;
+            height: 100px;
+        }
+
+        .submit {
+            background-color: blue;
+            color: white;
+            border: 1px grey solid;
+            outline: none;
+            border-radius: 4px;
+            padding: 1em 2em;
+            margin: 1em;
+        }
+
+        .signin {
+            background-color: red;
+            color: white !important;
+            padding: 1em;
+            margin: 1em;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .ready {
+            color: rgb(26, 15, 189);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="POST" action="/users/editdash/<%= doc._id %>">
+
+        <div class="conta">
+            <div class="login">
+                <h2>Edit Profile</h2>
+                <p class="p2"></p>
+            </div>
+            <div class="input">
+                <input type="text" name="name" placeholder="&#xf007; Change Username"
+                    value="<%= typeof doc.name != 'undefined' ? doc.name : '' %>"
+                    style="font-family: Arial, 'Font Awesome 5 Free'"  />
+            </div>
+            <div class="input">
+
+                <textarea type="text" name="bio" placeholder="&#xf05a; Change Bio"
+                    value="<%= typeof doc.bio != 'undefined' ? doc.bio : '' %>"
+                    style="font-family: Arial, 'Font Awesome 5 Free'"  autocomplete="off"  ><%= typeof doc.bio != 'undefined' ? doc.bio : '' %></textarea>
+            </div>
+            <div class="input">
+                <input type="text" name="location" placeholder="&#xf124; Change Location"
+                    value="<%= typeof doc.location != 'undefined' ? doc.location : '' %>"
+                    style="font-family: Arial, 'Font Awesome 5 Free'" " autocomplete="off"  />
+            </div>
+            <input type="url" name="web" placeholder="&#xf0c1; Change website"
+                style="font-family: Arial, 'Font Awesome 5 Free'"
+                value="<%= typeof doc.web != 'undefined' ? doc.web : '' %>"  autocomplete="off"  />
+        </div>
+        <button class="submit">Edit</button>
+    </form>
+
+</body>
+
+</html>
