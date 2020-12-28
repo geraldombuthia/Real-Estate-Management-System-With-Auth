@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
         <style>
             * {
                 box-sizing: border-box;
@@ -109,8 +104,7 @@
             .Bio {
                 padding: 0 10px;
                 display: flex;
-                flex-wrap: wrap;
-                line-height: 0;
+               flex-wrap: wrap;
             }
 
             .link {
@@ -177,7 +171,7 @@
             .housecard {
                 width: 100%;
                 max-width: 500px;
-                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+                box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.18);
                 border-radius: 10px;
                 padding: 0.5em;
                 display: flex;
@@ -210,9 +204,7 @@
                 }
             }
         </style>
-</head>
 
-<body>
     <div class="container">
         <div class="images">
             <div class="rectangle">
@@ -224,7 +216,7 @@
 
         <div id="profile">
             <div class="name">
-                <a class="edit" href="/editdash">Edit profile</a>
+                <a class="edit" href="/users/editdash/<%= doc._id %>">Edit profile</a>
                 <a href="/users/<%=doc._id %>/new" class="edit">New Sale</a>
             </div>
             <div class="titles">
@@ -256,20 +248,21 @@
         </div>
         <div class="following">
             <p class="grey"><b>
-                    <%= typeof doc.house !='undefined' ? doc.house.length : '0' %>
+                    <%= doc.housePosted %>
                 </b> Houses Posted</p>
             <p class="grey"><b>1240</b> Followers</p>
         </div>
         <h3>Houses posted</h3>
-        <% typeof doc.houses=='undefined' ? "No houses Posted " : doc.houses.forEach(house=> {%>
-            <div class="housecont">
+        <div class="housecont">
+        <% typeof houses =='undefined' ? " " : houses.forEach(house=> {%>
+            
                 <div class="housecard">
                     <div class="top">
                         <p>
                             <%= house.type %>
                         </p>
                         <p class="age">
-                            <%= house.age %>
+                            <%= new Date(house.age).toLocaleDateString("en-GB") %>
                         </p>
                     </div>
                     <div class="cash">
@@ -295,6 +288,3 @@
 
 
             </div>
-</body>
-
-</html>

@@ -3,90 +3,131 @@
 
 <head>
     <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    
+
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
-        <style>
-            body {
-                padding: 0;
-                margin: 0;
-                background: white;
-                background-size: cover;
-                height: 100%;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: white;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-            }
+        }
 
-            form {
-                background-color: white;
-                height: 80%;
-                width: 60%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                padding: 2em;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+        form {
+            background-color: white;
+            height: 80%;
+            width: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: beige;
+            box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+        }
 
-            }
+        .conta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+        }
 
-            .conta {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
+        .login>h2 {
+            text-align: center;
+            margin: 1em 0;
+        }
 
-            .login>h2 {
-                text-align: center;
-                margin: 1em 0;
-            }
+        input,
+        select,
+        textarea {
+            margin: 10px 0px;
+            border-radius: 5px;
+            border: none;
+            background: none;
+            padding: 10px 0;
+        }
 
-            input {
-                padding: 10px;
-                margin: 10px 0px;
-                width: 300px;
-                border-radius: 5px;
+        label {
+            font-weight: 700;
+        }
 
-            }
+        .pair {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            border-bottom: solid grey 1px;
+            margin: 0.5em 0;
+        }
 
-            textarea {
-                padding: 10px;
-                width: 300px;
-                height: 100px;
-                border-radius: 5px;
-            }
+        .input:nth-child(2), #roominput {
+            border-left: solid grey 1px;
+            padding-left: 10px;
+        }
 
-            .submit {
-                background-color: blue;
-                color: white;
-                border: 1px grey solid;
-                outline: none;
-                border-radius: 4px;
-                padding: 1em 2em;
-                margin: 1em;
-            }
+        .input {
+            display: flex;
+            flex-direction: column;
+            margin: 0.5em;
+            width: 100%;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+        #bedrooms,
+        #bathrooms,
+        #rooms {
+            width: 100%;
+        }
 
-            .signin {
-                background-color: red;
-                color: white !important;
-                padding: 1em;
-                margin: 1em;
-                border-radius: 5px;
-                text-decoration: none;
-            }
+        .submit {
+            background-color: blue;
+            color: white;
+            border: 1px grey solid;
+            outline: none;
+            border-radius: 4px;
+            padding: 1em 2em;
+            margin: 1em;
+        }
 
-            .ready {
-                color: rgb(26, 15, 189);
-                text-decoration: underline;
-            }
-        </style>
+        .signin {
+            background-color: red;
+            color: white !important;
+            padding: 1em;
+            margin: 1em;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .ready {
+            color: rgb(26, 15, 189);
+            text-decoration: underline;
+        }
+        .bottom{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            background-color: hsl(210, 9%, 96%);
+        }
+        .cancel{
+            margin-top: 25px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -97,8 +138,58 @@
                 <h2>New House for Sale</h2>
                 <p class="p2"></p>
             </div>
+            <div class="pair">
+                <div class="input">
+                    <label for="type">Type</label>
+                    <select type="text" name="type" placeholder="" minlength="4" id="type" required>
+                        <option value="villa">Villa</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="office">Office</option>
+                        <option value="building">Building</option>
+                        <option value="shop">Shop</option>
+                        <option value="Social housing">Social housing</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" placeholder="kSH" required />
+                </div>
+            </div>
+            <div class="pair">
+                <div class="input">
+                    <label for="description">Description</label>
+                    <textarea type="text" name="description" id="description"
+                        placeholder="Describe the house you are selling in detail" autocomplete="off"
+                        required></textarea>
+                </div>
+            </div>
 
-            <div class="input">
+            <div class="pair">
+                <div class="input">
+                    <label for="location">Location</label>
+                    <input type="text" name="address" id="location" placeholder="Enter address" required />
+                </div>
+                <div class="input">
+                    <label for="age">Construction date</label>
+                    <input type="date" id="date" name="age" placeholder="Date" required />
+                </div>
+            </div>
+            <div class="pair">
+                <div class="input">
+                    <label for="bedrooms">Bedrooms</label>
+                    <input type="number" id="bedrooms" name="bedrooms" required>
+                </div>
+                <div class="input">
+                    <label for="bathrooms">Bathrooms</label>
+                    <input type="number" id="bathrooms" name="bathrooms" required>
+                </div>
+                <div class="input" id="roominput">
+                    <label for="bathrooms">Rooms</label>
+                    <input type="number" id="rooms" name="rooms" required>
+                </div>
+            </div>
+
+            <!-- <div class="input">
                 <input type="text" name="type" placeholder="&#xf007; Building Type"
                     style="font-family: Arial, 'Font Awesome 5 Free'" minlength="4" required />
             </div>
@@ -129,9 +220,12 @@
             <div class="input">
                 <textarea type="text" name="description" placeholder="&#xf023; House Description"
                     style="font-family: Arial, 'Font Awesome 5 Free'" autocomplete="off" required></textarea>
-            </div>
+            </div> -->
         </div>
-        <button class="submit">Edit</button>
+        <div class="bottom">
+          <a href="/" class="cancel">Cancel</a><button class="submit">Edit</button>
+        </div>
+        
     </form>
 
 </body>

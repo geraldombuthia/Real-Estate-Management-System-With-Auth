@@ -27,7 +27,11 @@ const HouseSchema = new mongoose.Schema({
     }, description: {
         type: String,
         required: true
-    }, customers: {
+    }, datePosted: {
+        type: Date,
+        default: Date.now,
+    },
+    customers: {
         type: Array,
         default: [],
         required: true

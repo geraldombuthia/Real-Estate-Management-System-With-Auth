@@ -1,0 +1,440 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-width: 100vw;
+        min-height: 100vh;
+        align-items: center;
+    }
+
+    nav {
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 10vh;
+        font-family: "Archivo Narrow", sans-serif;
+        z-index: 900;
+        border-top: solid 6px rgb(253, 187, 3);
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        background-color: transparent;
+        transition: background-color 0.5s;
+    }
+
+    .logo {
+        margin-left: 1em;
+        font-weight: bolder;
+        font-size: 1.3em;
+        color: rgb(253, 191, 17);
+        z-index: 1000;
+        text-shadow: 1px 1px 2px white;
+    }
+
+    .logo>a {
+        text-decoration: none;
+        color: rgb(253, 191, 17);
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: space-around;
+        width: 30%;
+        list-style-type: none;
+    }
+
+    .nav-links li a {
+        color: white;
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-weight: 500;
+    }
+
+    .burger {
+        display: none;
+        padding: 0 1em;
+    }
+
+    .burger div {
+        width: 25px;
+        height: 5px;
+        background-color: blue;
+        margin: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Header */
+    header {
+        height: 40vh;
+        width: 100vw;
+        background: #1488CC;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #2B32B2, #1488CC);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 2em;
+        min-width: 50%;
+        color: white;
+    }
+
+    .welcome {
+        font-size: 1.5em;
+        margin: 1em;
+    }
+
+    .input {
+        width: 75%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 1em 0;
+    }
+
+    input {
+        padding: 1em;
+        height: 4em;
+        width: 50%;
+        border-right: 0;
+    }
+
+    .submit {
+        height: 4em;
+        padding: 0 1em;
+        border-left: 0;
+    }
+
+    ::-webkit-input-placeholder {
+        /* Edge */
+        color: red;
+    }
+
+    :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: red;
+    }
+
+    ::placeholder {
+        color: black;
+        font-size: 1.3em;
+        font-weight: 700;
+    }
+
+    section {
+        padding: 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80vw;
+        min-height: 50vh;
+
+    }
+
+    .housecont {
+        width: 80vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .housecard {
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+        border-radius: 10px;
+        padding: 0.5em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1em 0;
+    }
+
+    .top,
+    .rooms {
+        display: flex;
+        flex-direction: row;
+        margin: 1em 0;
+    }
+
+    .cash {
+        font-weight: bold;
+        color: black;
+    }
+
+    .age,
+    .bath {
+        margin-left: 1em;
+    }
+
+    /* Media queries */
+    @media screen and (max-width: 1024px) {
+        .nav-links {
+            width: 60%;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .nav-links {
+            width: 600px;
+        }
+
+    }
+
+    @media screen and (min-width: 768px) {
+        body {
+            overflow-x: hidden;
+        }
+
+        .logo {
+            margin-left: 2em;
+        }
+
+        .nav-links {
+            margin-right: 2em;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        body {
+            overflow-x: hidden;
+        }
+
+        .nav-links {
+            position: fixed;
+            right: 0px;
+            height: 100vh;
+            top: 0;
+            background-color: rgba(8, 88, 59, 0.582);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+            transform: translateX(100%);
+            transition: transform 0.5s ease-in;
+            border: solid 1px grey;
+        }
+
+        .nav-links li {
+            opacity: 0;
+        }
+
+        .nav-links li a {
+            color: white;
+            font-weight: 600;
+        }
+
+        .burger {
+            display: block;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        nav {
+            min-height: 13vh;
+            background-color: transparent;
+        }
+    }
+
+    .nav-active {
+        transform: translateX(0%);
+        transition: transform 0.5s ease-in;
+    }
+
+    /* Animations  */
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .toggle .line2 {
+        opacity: 0;
+    }
+
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-8px, -8px);
+    }
+</style>
+<nav id="nav">
+    <div class="logo"><a href="#home">REMS</a></div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#contacts">Contacts</a></li>
+    </ul>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+</nav>
+<header>
+    <div class="title">
+        <p class="welcome">Welcome to the Home of Homes</p>
+        <h2 class="welcomeh2">Find a property today</h2>
+    </div>
+
+    <form action="/" method="POST" class="input">
+        <input type="search" name="search" id="search" placeholder="&#xf002; Search"
+            style="font-family: Arial, 'Font Awesome 5 Free'">
+        <button type="submit" class="submit"><i class="fas fa-search"></i>Search</button>
+    </form>
+
+</header>
+<section class="top">
+
+    <div class="housecont">
+        <h3>Top properties</h3>
+        <% typeof houses=='undefined' ? " " : houses.forEach(house=> {%>
+
+            <div class="housecard">
+                <div class="top">
+                    <p>
+                        <%= house.type %>
+                    </p>
+                    <p class="age">
+                        <%= house.age %>
+                    </p>
+                </div>
+                <div class="cash">
+                    <p>$<%= house.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, "," ) %>
+                    </p>
+                </div>
+                <div class="address">
+                    <p>
+                        <%=house.address%>
+                    </p>
+                </div>
+                <div class="rooms">
+                    <p><i class="fas fa-bed"></i>
+                        <%= house.bedrooms %> Bedrooms
+                    </p>
+                    <p class="bath"><i class="fas fa-bath"></i>
+                        <%= house.bathrooms %> Bathrooms
+                    </p>
+                </div>
+            </div>
+            <% })%>
+        </div>
+
+</section>
+<section class="popular">
+    <div class="housecont">
+        <h3>Popular locations</h3>
+        <% typeof houses=='undefined' ? " " : houses.forEach(house=> {%>
+    
+            <div class="housecard">
+                <div class="top">
+                    <p>
+                        <%= house.type %>
+                    </p>
+                    <p class="age">
+                        <%= house.age %>
+                    </p>
+                </div>
+                <div class="cash">
+                    <p>$<%= house.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, "," ) %>
+                    </p>
+                </div>
+                <div class="address">
+                    <p>
+                        <%=house.address%>
+                    </p>
+                </div>
+                <div class="rooms">
+                    <p><i class="fas fa-bed"></i>
+                        <%= house.bedrooms %> Bedrooms
+                    </p>
+                    <p class="bath"><i class="fas fa-bath"></i>
+                        <%= house.bathrooms %> Bathrooms
+                    </p>
+                </div>
+            </div>
+            <% })%>
+
+</section>
+<script>
+    const navSlide = () => {
+        const burger = document.querySelector(".burger");
+        const nav = document.querySelector(".nav-links");
+        const navLinks = document.querySelectorAll(".nav-links li");
+
+        burger.addEventListener("click", () => {
+            //Toggle Nav
+            nav.classList.toggle("nav-active");
+
+            //Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = "";
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3
+                        }s`;
+                }
+            });
+            //Burger Animation
+            burger.classList.toggle("toggle");
+        });
+        //closing the nav when anywhere else has been clicked
+        nav.addEventListener("click", () => {
+            nav.classList.toggle("nav-active");
+            burger.classList.toggle("toggle");
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = "";
+                }
+            });
+        });
+    };
+    navSlide();
+
+    window.onscroll = function () {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        const nav = document.getElementById("nav")
+        const logo = document.querySelector('.logo')
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            nav.style.backgroundColor = "rgb(6, 82, 70)";
+            nav.style.boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.18)";
+            logo.style.textShadow = "0px 0px 0px transparent";
+        } else {
+            nav.style.backgroundColor = "transparent";
+            nav.style.boxShadow = "0px 0px 0px rgba(0, 0, 0, 0)";
+            logo.style.textShadow = "1px 1px 5px white";
+        }
+    }
+
+</script>

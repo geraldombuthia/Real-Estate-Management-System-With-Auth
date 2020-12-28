@@ -19,7 +19,6 @@ router.post("/login", (req, res, next) => {
         failureRedirect: "/users/login",
         failureFlash: true,
     })(req, res, next);
-    console.log(req.body);
 })
 //register handle
 router.post("/register", (req, res) => {
@@ -80,13 +79,10 @@ router.post("/register", (req, res) => {
 //handle bio and user other info
 router.get("/editdash/:id", (req, res) => {
     const { id } = req.params;
-    console.log(id);
     User.findById({
         _id: id
     }, (err, doc) => {
         if (err) throw err;
-        console.log(doc + "get editdash")
-
         res.render("./editdash", { doc: doc })
     })
 
@@ -97,11 +93,8 @@ router.post("/editdash/:id", (req, res) => {
     const newBio = {
         name, bio, web, location
     };
-    console.log(newBio);
     User.findByIdAndUpdate(id, newBio, (err, doc) => {
         if (err) throw err;
-        console.log(id + "find");
-        console.log(doc + "finddoc")
         res.redirect("/dashboard")
     })
 })
@@ -118,10 +111,15 @@ router.post("/:id/new", (req, res) => {
     newHouse.save()
         .then((value) => {
         console.log(value + "value")
-        req.flash("success_msg", "You have posted your house for sale")
+            req.flash("success_msg", "You have posted your house for sale")
+            User.findByIdAndUpdate(id, { $inc: { 'housePosted': 1 } }, (err, doc) => {
+                if (err) throw err;
+
+            })
         res.redirect("/dashboard");
     })
         .catch(value => console.log(value));
+    
 })
 //logout
 router.get("/logout", (req, res) => {
